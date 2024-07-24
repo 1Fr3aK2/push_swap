@@ -19,16 +19,14 @@ static void rotate(r_list **stack)
 
     if(!(*stack) || !(*stack) -> next)
         return ;
-    else
-    {
-        temp = (*stack); // guardar o node 1
-        (*stack) = (*stack) -> next; // definir o node1 -> node2
-        lastnode = (r_list *)ft_lstlast((t_list *)*stack); // encontrar o ultimo node
-        (*stack)->prev = NULL;
-        lastnode -> next = temp;
-        temp -> prev = lastnode;
-        temp -> next = NULL; // ultimo node passa a ser o node 1
-    }
+        
+    temp = (*stack); // guardar o node 1
+    (*stack) = (*stack) -> next; // definir o node1 -> node2
+    lastnode = (r_list *)ft_lstlast((t_list *)*stack); // encontrar o ultimo node
+    (*stack)->prev = NULL;
+    lastnode -> next = temp;
+    temp -> prev = lastnode;
+    temp -> next = NULL; // ultimo node passa a ser o node 1
 }  
 
 void ra(r_list **a_stack)

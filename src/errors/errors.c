@@ -14,7 +14,7 @@
 
 int writing_errors(char *str)
 {
-    if (!str)
+    if (!str || *str == '\0')
         return (1);
     if (!(*str == '+' || *str == '-' || (*str >= '0' && *str <= '9')))
         return(1);
@@ -37,15 +37,15 @@ int writing_errors(char *str)
 
 int duplicate(r_list *stack, int n)
 {
-    if (!stack)
-        return(1);
-    while(stack)
-    {
-        if (stack -> number == n)
-            return (1);
-        stack = stack -> next;
-    }
-    return (0);
+	if (!stack)
+		return (0);
+	while (stack)
+	{
+		if (stack->number == n)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
 }
 
 void free_stack(r_list **stack)
@@ -54,18 +54,19 @@ void free_stack(r_list **stack)
 
     if(!stack || !(*stack))
         return ;
-    while((*stack) -> next)
+    while (*stack)
     {
-        temp = (*stack) -> next;
-        free(stack);
-        *stack = temp;
+        temp = *stack;
+        *stack = (*stack)->next;
+        free(temp);
     }
-    *stack = NULL;
 }
 
-void free_message(r_list **stack)
+
+void free_message(r_list **stack, r_list **b_stack)
 {
     free_stack(stack);
+    free_stack(b_stack);
     ft_printf("Error, freeing stacks ...\n");
     exit(1);
 }

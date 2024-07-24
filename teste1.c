@@ -359,12 +359,14 @@ void sort_five(r_list **a_stack)
                 ra(a_stack);
                 ra(a_stack);
             }
-            else if(highest_number_b->number > lowest_number_a->number && highest_number_b->number < highest_number_a->prev->number)
+            else if(b_stack->number < highest_number_a ->number && b_stack->number > lowest_number_a->number && b_stack->number < highest_number_a->prev->number && b_stack->number > (*a_stack)->next->number)
             {
+                ra(a_stack);
                 pa(&b_stack, a_stack);
                 sa(a_stack);
+                rra(a_stack);
             }
-            if(highest_number_b->number < highest_number_a->number && highest_number_b->number > lowest_number_a->number && highest_number_b->number < lowest_number_a->next->number)
+            else if(highest_number_b->number < highest_number_a->number && highest_number_b->number > lowest_number_a->number && highest_number_b->number < lowest_number_a->next->number)
             {
                 pa(&b_stack, a_stack);
                 sa(a_stack);
@@ -375,9 +377,9 @@ void sort_five(r_list **a_stack)
         {
             pa(&b_stack, a_stack);
             lowest_number_a = low_number(*a_stack);
-        }
+        } 
     }   
-}
+} 
 
 
 
@@ -386,11 +388,11 @@ void sort_five(r_list **a_stack)
 int main(void) {
     r_list *a_stack = NULL;
 
-    add_node(&a_stack, 5);
-    add_node(&a_stack, 22);
-    add_node(&a_stack, 37);
-    add_node(&a_stack, 14);
-    add_node(&a_stack, 8);
+    add_node(&a_stack, 87);
+    add_node(&a_stack, 6);
+    add_node(&a_stack, 45);
+    add_node(&a_stack, 3);
+    add_node(&a_stack, 34);
 
 
     printf("Antes de ordenar:\n");

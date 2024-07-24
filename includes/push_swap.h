@@ -50,13 +50,13 @@ void rr(r_list **a_stack, r_list **b_stack);
 
 //algorithms
 void sort_three(r_list **stack);
-void sort_five(r_list **a_stack);
+void sort_five(r_list **a_stack, r_list **b_stack);
 
 //errors
 int writing_errors(char *str);
 int duplicate(r_list *stack, int n);
 void free_stack(r_list **stack);
-void free_message(r_list **stack);
+void free_message(r_list **stack, r_list **b_stack);
 
 //utils
 long	ft_atol(const char *str);

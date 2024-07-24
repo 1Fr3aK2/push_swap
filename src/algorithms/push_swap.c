@@ -42,7 +42,7 @@
     } */
 
 
-void push_swap(r_list **a_stack, r_list **b_stack)
+/* void push_swap(r_list **a_stack, r_list **b_stack)
 {
     r_list *highest_number_b;
     r_list *lowest_number_b;
@@ -92,4 +92,4 @@ void push_swap(r_list **a_stack, r_list **b_stack)
 
         }
 
-}
+} */

@@ -16,14 +16,17 @@ static void reverse(r_list **stack)
     r_list *temp;
     r_list *lastnode;
     
-    if (!(*stack) || !(*stack) -> next)
+    if (!(*stack) || !(*stack)->next)
         return ;
-    lastnode = (r_list *)ft_lstlast((t_list *)stack);
+    
+    lastnode = (r_list *)ft_lstlast((t_list *)*stack);
     temp = (*stack);
-    lastnode -> prev -> next = NULL;
+
+    lastnode->prev->next = NULL;
     (*stack) = lastnode;
-    lastnode -> next = temp;
-    lastnode -> prev = NULL;
+    lastnode->next = temp;
+    lastnode->prev = NULL;
+    temp->prev = lastnode;
 }
 
 void rra(r_list **a_stack)

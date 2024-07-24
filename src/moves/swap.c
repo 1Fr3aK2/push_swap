@@ -26,7 +26,6 @@ static void swap(r_list **stack)
     (*stack) -> prev = NULL;
     temp -> prev = (*stack);
     temp -> next -> prev = temp;
-
 }
 
 void sa(r_list **a_stack)
