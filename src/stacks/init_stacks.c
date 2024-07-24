@@ -12,27 +12,6 @@
 
 #include "../../includes/push_swap.h"
 
-/* void init_stack(r_list **stack, char *argv[])
-{
-    long number;
-    int i;
-
-    i = 0;
-    while(argv[i])
-    {
-        if(writing_errors(argv[i]) == 1)
-            free_message(stack);
-        number = ft_atol(argv[i]);
-        if(number > INT_MAX || number < INT_MIN)
-            free_message(stack);
-        if(duplicate(*stack, (int)number))
-            free_message(stack);
-        add_node(stack, (int)number);
-        i++;
-    }
-}
- */
-
 void init_stack(r_list **stack, char *argv[])
 {
     r_list *node;
@@ -41,31 +20,55 @@ void init_stack(r_list **stack, char *argv[])
     int i;
 
     i = 1;
-    while(argv[i])
+    while (argv[i])
     {
-        number = ft_atol(argv[i]);
-        if(number > INT_MAX || number < INT_MIN)
-            write(2, "Error", 5);
-        node = malloc(sizeof(r_list));
-        if(!node)
+        // Verifica se há erros de escrita antes de converter
+        if (writing_errors(argv[i]))
         {
-            write(2, "Malloc failed", 13);
-            return ;
+            ft_printf("Error of syntax!\n");
+            free_stack(stack);
+            return;
         }
-        node -> number = (int)number;
-        node -> next = NULL;
-        if(!(*stack))
+        
+        // Converte o argumento para número e verifica se está dentro dos limites
+        number = ft_atol(argv[i]);
+        if (number > INT_MAX || number < INT_MIN)
+        {
+            ft_printf("Error, the number is outside of Integer limits!\n");
+            free_stack(stack);
+            return;
+        }
+
+        // Verifica se o número já está na stack
+        if (duplicate(*stack, (int)number))
+        {
+            ft_printf("Error, duplicated numbers!\n");
+            free_stack(stack);
+            return;
+        }
+
+        // Cria um novo node
+        node = malloc(sizeof(r_list));
+        if (!node)
+        {
+            ft_printf("Malloc failed\n");
+            free_stack(stack);
+            return;
+        }
+        node->number = (int)number;
+        node->next = NULL;
+        if (!(*stack))
         {
             node->prev = NULL;
-            (*stack) = node;
+            *stack = node;
         }
         else
         {
-            temp = (*stack);
-            while(temp -> next)
-                temp = temp -> next;
-            temp -> next = node;
-            node -> prev = temp;
+            temp = *stack;
+            while (temp->next)
+                temp = temp->next;
+            temp->next = node;
+            node->prev = temp;
         }
         i++;
     }

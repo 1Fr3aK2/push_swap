@@ -51,24 +51,12 @@ int duplicate(r_list *stack, int n)
 void free_stack(r_list **stack)
 {
     r_list *temp;
-
-    if(!stack || !(*stack))
-        return ;
     while (*stack)
     {
-        temp = *stack;
-        *stack = (*stack)->next;
-        free(temp);
+        temp = (*stack)->next;
+        free(*stack);
+        *stack = temp;
     }
-}
-
-
-void free_message(r_list **stack, r_list **b_stack)
-{
-    free_stack(stack);
-    free_stack(b_stack);
-    ft_printf("Error, freeing stacks ...\n");
-    exit(1);
 }
 
 /* int main()

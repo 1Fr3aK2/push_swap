@@ -36,32 +36,6 @@ long ft_atol(const char *str)
 	return (number *sign);
 }
 
-void add_node(r_list **stack, int number)
-{
-    r_list *newnode;
-    r_list *lastnode;
-
-    if (!stack)
-        return ;
-    newnode = malloc(sizeof(r_list));
-    if (!newnode)
-        return ;
-    newnode->next = NULL;
-    newnode->number = number;
-    if (!*stack)
-    {
-        *stack = newnode;
-        newnode->prev = NULL;
-    }
-    else
-    {
-        lastnode = (r_list *)ft_lstlast((t_list *)*stack);
-        lastnode->next = newnode;
-        newnode->prev = lastnode;
-    }
-}
-
-
 int verify(r_list *stack)
 {
 	if(!stack)

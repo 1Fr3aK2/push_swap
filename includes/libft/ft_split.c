@@ -85,7 +85,7 @@ char	**ft_split(char const *s, char c)
 		{
 			dest[i] = word_aloc(s, c); 
 			if (!dest[i++])
-				return (free_str(dest, i));
+				return (free_str(dest, i - 1), NULL);
 		}
 		while (*s && *s != c)
 			s++;

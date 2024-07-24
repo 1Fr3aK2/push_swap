@@ -16,6 +16,8 @@
 #include <unistd.h>
 #include <limits.h>
 #include <stdio.h>
+#include <stddef.h>
+#include <stdbool.h>
 #include "../includes/libft/libft.h"
 #include "../includes/libft/ft_printf/ft_printf.h"
 
@@ -56,11 +58,9 @@ void sort_five(r_list **a_stack, r_list **b_stack);
 int writing_errors(char *str);
 int duplicate(r_list *stack, int n);
 void free_stack(r_list **stack);
-void free_message(r_list **stack, r_list **b_stack);
 
 //utils
 long	ft_atol(const char *str);
-void add_node(r_list **stack, int number);
 r_list *high_number(r_list *stack);
 r_list *low_number(r_list *stack); 
 
@@ -69,9 +69,7 @@ void init_stack(r_list **stack, char *argv[]);
 int verify(r_list *stack);
 
 //main
-/* int main(int argc, char *argv[]); */
-
-
+int main(int argc, char *argv[]);
 
 
 

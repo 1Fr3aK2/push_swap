@@ -99,5 +99,7 @@ void sort_five(r_list **a_stack, r_list **b_stack)
             lowest_number_a = low_number(*a_stack);
         }
     }
+    free_stack(a_stack);
+    free_stack(b_stack);
 }
 
