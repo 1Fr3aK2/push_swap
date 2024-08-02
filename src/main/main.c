@@ -13,7 +13,8 @@
 #include "../../includes/push_swap.h"
 
 // Função que processa os argumentos e imprime o resultado
-void process_args(int argc, char *argv[]) {
+void process_args(int argc, char *argv[])
+{
     if (argc < 2) {
         printf("Número insuficiente de argumentos.\n");
         return;
@@ -24,7 +25,6 @@ void process_args(int argc, char *argv[]) {
         printf("Argumento %d: %s\n", i, argv[i]);
     }
     
-    // Adicione mais verificações e depuração aqui para analisar o problema
 }
 
 void free_split(char **str)
