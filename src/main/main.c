@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 // Função que processa os argumentos e imprime o resultado
 void process_args(int argc, char *argv[]) {
