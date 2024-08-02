@@ -39,24 +39,26 @@ int duplicate(r_list *stack, int n)
 {
 	if (!stack)
 		return (0);
-	while (stack)
-	{
-		if (stack->number == n)
-			return (1);
-		stack = stack->next;
-	}
-	return (0);
+    while (stack) 
+    {
+        if (stack->number == n)
+            return 1;
+        stack = stack->next;
+    }
+    return 0;
 }
 
 void free_stack(r_list **stack)
 {
-    r_list *temp;
-    while (*stack)
-    {
-        temp = (*stack)->next;
-        free(*stack);
-        *stack = temp;
+    r_list *current = *stack;
+    r_list *next;
+
+    while (current != NULL) {
+        next = current->next;
+        free(current);
+        current = next;
     }
+    *stack = NULL;
 }
 
 /* int main()

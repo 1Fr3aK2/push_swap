@@ -16,17 +16,19 @@ static void swap(r_list **stack)
 {
     r_list *temp;
 
-     if(!(*stack) || !(*stack) -> next)
+    if (!(*stack) || !(*stack)->next)
         return ;
-        
+
     temp = (*stack);
-    (*stack) = (*stack) -> next;
-    temp -> next = (*stack) -> next;
-    (*stack) -> next = temp;
-    (*stack) -> prev = NULL;
-    temp -> prev = (*stack);
-    temp -> next -> prev = temp;
+    (*stack) = (*stack)->next;
+    temp->next = (*stack)->next;
+    (*stack)->next = temp;
+    (*stack)->prev = NULL;
+    temp->prev = (*stack);
+    if (temp->next)
+        temp->next->prev = temp;
 }
+
 
 void sa(r_list **a_stack)
 {

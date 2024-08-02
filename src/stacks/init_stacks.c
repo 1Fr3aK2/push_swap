@@ -12,15 +12,16 @@
 
 #include "../../includes/push_swap.h"
 
-void init_stack(r_list **stack, char *argv[])
-{
+void init_stack(r_list **stack, char **argv, int argc) 
+{   
     r_list *node;
     r_list *temp;
     long number;
     int i;
 
-    i = 1;
-    while (argv[i])
+    i = 0;
+
+    while (i < argc)
     {
         // Verifica se há erros de escrita antes de converter
         if (writing_errors(argv[i]))
@@ -29,7 +30,7 @@ void init_stack(r_list **stack, char *argv[])
             free_stack(stack);
             return;
         }
-        
+
         // Converte o argumento para número e verifica se está dentro dos limites
         number = ft_atol(argv[i]);
         if (number > INT_MAX || number < INT_MIN)
@@ -57,7 +58,7 @@ void init_stack(r_list **stack, char *argv[])
         }
         node->number = (int)number;
         node->next = NULL;
-        if (!(*stack))
+        if (!(*stack)) 
         {
             node->prev = NULL;
             *stack = node;
@@ -71,7 +72,5 @@ void init_stack(r_list **stack, char *argv[])
             node->prev = temp;
         }
         i++;
-    }
+    }   
 }
-
-
