@@ -16,13 +16,13 @@
 void process_args(int argc, char *argv[])
 {
     if (argc < 2) {
-        printf("Número insuficiente de argumentos.\n");
+        ft_printf("Número insuficiente de argumentos.\n");
         return;
     }
 
-    printf("Número de argumentos: %d\n", argc);
+    ft_printf("Número de argumentos: %d\n", argc);
     for (int i = 0; i < argc; ++i) {
-        printf("Argumento %d: %s\n", i, argv[i]);
+        ft_printf("Argumento %d: %s\n", i, argv[i]);
     }
     
 }
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 
     if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
     {
-        printf("Número insuficiente de argumentos.\n");
+        ft_printf("Número insuficiente de argumentos.\n");
         return 1;
     }
     if (argc == 2)
@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
         split_argv = ft_split(argv[1], ' ');
         if (!split_argv)
         {
-            printf("Erro ao dividir a string.\n");
+            ft_printf("Erro ao dividir a string.\n");
             return 1;
         }
         argv = split_argv;
@@ -78,6 +78,14 @@ int main(int argc, char *argv[])
     init_stack(&a_stack, argv, argc);
     size = ft_lstsize((t_list *)a_stack);
 
+    ft_printf("a_stack antes de ordenar: ");
+    r_list *temp_itera = a_stack; // Create a separate variable for iteration
+    while (temp_itera)
+    {
+        ft_printf("%d ", temp_itera->number);
+        temp_itera = temp_itera->next;
+    }
+    ft_printf("\n");
     if (verify(a_stack) == 1)
     {
         if (size == 2)
@@ -91,13 +99,14 @@ int main(int argc, char *argv[])
     }
 
     // Imprimir a pilha 'a_stack'
-    r_list *current = a_stack;
-    while (current)
+    ft_printf("a_stack depois de ordenar: ");
+    r_list *temp_iter = a_stack; // Create a separate variable for iteration
+    while (temp_iter)
     {
-        ft_printf("%d ", current->number);
-        current = current->next;
+        ft_printf("%d ", temp_iter->number);
+        temp_iter = temp_iter->next;
     }
-    printf("\n");
+    ft_printf("\n");
 
     if (split_argv)
         free_split(split_argv);

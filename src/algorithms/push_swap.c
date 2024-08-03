@@ -23,7 +23,7 @@ void push_swap(r_list **a_stack, r_list **b_stack)
 /*     highest_number_a = high_number(*a_stack);
  *//*     highest_number_b = high_number_b(*b_stack);
  */
-    while (lst_size < 5)
+    while (lst_size > 3)
     {
         pb(a_stack, b_stack);
         lst_size--;

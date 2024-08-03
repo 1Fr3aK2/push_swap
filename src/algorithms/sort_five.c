@@ -33,12 +33,19 @@ void sort_five(r_list **a_stack, r_list **b_stack)
     lowest_number_a = low_number(*a_stack);
     highest_number_b = high_number(*b_stack);
 
+
     while(*b_stack)
     {
         if(*b_stack && highest_number_b && (*b_stack)->number != highest_number_b->number)
         {
             if((*b_stack)->number < lowest_number_a->number)
                 pa(b_stack, a_stack);
+            else if((*b_stack)->number > highest_number_a->number)
+            {
+                pa(b_stack, a_stack);
+                ra(a_stack);
+                highest_number_a = high_number(*a_stack);
+            }
             else if((*b_stack)->number > lowest_number_a->number &&  (*b_stack)->number > highest_number_a->prev-> number)
             {
                 rra(a_stack);
@@ -50,12 +57,6 @@ void sort_five(r_list **a_stack, r_list **b_stack)
             {
                 pa(b_stack, a_stack);
                 sa(a_stack);
-            }
-            else if((*b_stack)->number > highest_number_a->number)
-            {
-                pa(b_stack, a_stack);
-                ra(a_stack);
-                highest_number_a = high_number(*a_stack);
             }
         }
 
@@ -99,7 +100,4 @@ void sort_five(r_list **a_stack, r_list **b_stack)
             lowest_number_a = low_number(*a_stack);
         }
     }
-    free_stack(a_stack);
-    free_stack(b_stack);
 }
-
