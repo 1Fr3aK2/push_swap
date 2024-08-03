@@ -31,5 +31,4 @@ void push_swap(r_list **a_stack, r_list **b_stack)
     sort_five(a_stack, b_stack);
 
 
-
 }
