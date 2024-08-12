@@ -32,7 +32,7 @@ static void rotate(r_list **stack)
 void ra(r_list **a_stack)
 {
     rotate(a_stack);
-    printf("ra\n");
+    ft_printf("ra\n");
 }
 
 void rb(r_list **b_stack)

@@ -14,21 +14,24 @@
 
 void push_swap(r_list **a_stack, r_list **b_stack)
 {
-/*     r_list *highest_number_a;
-    r_list *highest_number_b; */
-
     int lst_size;
-
-    lst_size = ft_lstsize((t_list *) a_stack);
-/*     highest_number_a = high_number(*a_stack);
- *//*     highest_number_b = high_number_b(*b_stack);
- */
-    while (lst_size > 3)
+    r_list *lastnode;
+    if(!(*a_stack) || !(*a_stack)->next)
+        return ;
+    
+    lst_size = ft_lstsize((t_list *)*a_stack);
+    lastnode = (r_list *)ft_lstlast((t_list *)*a_stack);
+    while(lst_size > 5)
     {
-        pb(a_stack, b_stack);
+        if((*a_stack)->number < lastnode -> number)
+            pb(a_stack, b_stack);
+        else
+        {
+            rra(a_stack);
+            pb(a_stack, b_stack);
+            lastnode = (r_list *)ft_lstlast((t_list *)*a_stack);
+        }      
         lst_size--;
     }
     sort_five(a_stack, b_stack);
-
-
-}
+} 

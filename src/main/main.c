@@ -94,8 +94,8 @@ int main(int argc, char *argv[])
             sort_three(&a_stack);
         else if (size <= 5)
             sort_five(&a_stack, &b_stack);
-/*         else
-            push_swap(&a_stack, &b_stack); */
+        else
+            push_swap(&a_stack, &b_stack);
     }
 
     // Imprimir a pilha 'a_stack'
@@ -105,6 +105,15 @@ int main(int argc, char *argv[])
     {
         ft_printf("%d ", temp_iter->number);
         temp_iter = temp_iter->next;
+    }
+    ft_printf("\n");
+
+    ft_printf("b_stack : ");
+    r_list *temp_iteraa = b_stack; // Create a separate variable for iteration
+    while (temp_iteraa)
+    {
+        ft_printf("%d ", temp_iteraa->number);
+        temp_iteraa = temp_iteraa->next;
     }
     ft_printf("\n");
 

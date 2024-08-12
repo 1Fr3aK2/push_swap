@@ -23,6 +23,8 @@ void sort_five(r_list **a_stack, r_list **b_stack)
         return ;
 
     lst_size = ft_lstsize((t_list *)*a_stack);
+    if(lst_size < 5)
+        return ;
     while(lst_size > 3)
     {
         pb(a_stack, b_stack);
@@ -32,9 +34,9 @@ void sort_five(r_list **a_stack, r_list **b_stack)
     highest_number_a = high_number(*a_stack);
     lowest_number_a = low_number(*a_stack);
     highest_number_b = high_number(*b_stack);
+    lst_size = ft_lstsize((t_list *)*a_stack);
 
-
-    while(*b_stack)
+    while(*b_stack && lst_size < 5)
     {
         if(*b_stack && highest_number_b && (*b_stack)->number != highest_number_b->number)
         {
@@ -99,5 +101,6 @@ void sort_five(r_list **a_stack, r_list **b_stack)
             pa(b_stack, a_stack);
             lowest_number_a = low_number(*a_stack);
         }
+        lst_size = ft_lstsize((t_list *)*a_stack);
     }
 }
