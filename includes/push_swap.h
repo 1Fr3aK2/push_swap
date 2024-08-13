@@ -53,7 +53,7 @@ void rr(r_list **a_stack, r_list **b_stack);
 //algorithms
 void sort_three(r_list **stack);
 void sort_five(r_list **a_stack, r_list **b_stack);
-void push_swap(r_list **a_stack, r_list **b_stack);
+void sort_many(r_list **a_stack, r_list **b_stack);
 
 //errors
 int writing_errors(char *str);

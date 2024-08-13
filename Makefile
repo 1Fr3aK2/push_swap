@@ -1,8 +1,8 @@
 # Variáveis
-SRCS = src/algorithms/sort_three.c	src/algorithms/sort_five.c	src/algorithms/push_swap.c \
+SRCS = src/algorithms/sort_three.c	src/algorithms/sort_five.c	src/algorithms/sort_many.c \
        src/moves/push.c src/moves/reverse.c src/moves/rotate.c src/moves/swap.c \
        src/errors/errors.c src/utils/utils.c src/stacks/init_stacks.c \
-       src/main/main.c\
+       src/main/push_swap.c\
 	   
 NAME = push_swap
 COMPRESS = ar rcs

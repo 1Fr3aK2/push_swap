@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-void push_swap(r_list **a_stack, r_list **b_stack)
+void sort_many(r_list **a_stack, r_list **b_stack)
 {
     int lst_size;
     int median;

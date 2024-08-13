@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
         else if (size <= 5)
             sort_five(&a_stack, &b_stack);
         else
-            push_swap(&a_stack, &b_stack);
+            sort_many(&a_stack, &b_stack);
     }
 
     // Imprimir a pilha 'a_stack'

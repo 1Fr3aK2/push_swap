@@ -15,7 +15,6 @@
 void init_stack(r_list **stack, char **argv, int argc) 
 {   
     r_list *node;
-    r_list *temp;
     long number;
     int i;
 
@@ -57,20 +56,14 @@ void init_stack(r_list **stack, char **argv, int argc)
             return;
         }
         node->number = (int)number;
-        node->next = NULL;
-        if (!(*stack)) 
-        {
-            node->prev = NULL;
-            *stack = node;
-        }
-        else
-        {
-            temp = *stack;
-            while (temp->next)
-                temp = temp->next;
-            temp->next = node;
-            node->prev = temp;
-        }
+
+        // Insere o node no início da stack
+        node->next = *stack;
+        node->prev = NULL;
+        if (*stack)
+            (*stack)->prev = node;
+        *stack = node;
+
         i++;
     }   
 }
