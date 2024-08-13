@@ -82,3 +82,54 @@ r_list *low_number(r_list *stack)
 	}
 	return(lowest_number);
 }
+
+void free_split(char **str)
+{
+    int i;
+
+    i = 0;
+    while (str[i])
+    {
+        free(str[i]);
+        i++;
+    }
+    free(str);
+}
+
+
+/* while(*b_stack)
+    {
+        lastbnode = (r_list *)ft_lstlast((t_list *)*b_stack);
+        lastnode = (r_list *)ft_lstlast((t_list *)*a_stack);        
+        if((*b_stack)->number > lastbnode -> number)
+            pa(b_stack, a_stack);
+        else 
+        {   
+            rrb(b_stack);
+            pa(b_stack, a_stack);
+            lastbnode = (r_list *)ft_lstlast((t_list *)*b_stack);
+
+        }
+    } */
+
+
+int compare(r_list **b_stack, r_list **a_stack, int *counter)
+{
+	r_list *current; 
+
+	if(!(*a_stack) || !(*b_stack))
+		return (1);
+	*counter = 0;
+	current = (*a_stack);
+    while (*b_stack && *a_stack) 
+	{
+		if ((*b_stack)->number > current->number)
+		{
+            (*counter)++;
+            current = current->next;
+        }
+		else
+        	break;
+    }
+    return (*counter);
+}

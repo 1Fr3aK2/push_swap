@@ -64,6 +64,8 @@ void free_stack(r_list **stack);
 long	ft_atol(const char *str);
 r_list *high_number(r_list *stack);
 r_list *low_number(r_list *stack); 
+void free_split(char **str);
+int compare(r_list **b_stack, r_list **a_stack, int *counter);
 
 //stacks
 void init_stack(r_list **stack, char **argv, int argc);

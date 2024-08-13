@@ -27,18 +27,6 @@ void process_args(int argc, char *argv[])
     
 }
 
-void free_split(char **str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-    {
-        free(str[i]);
-        i++;
-    }
-    free(str);
-}
 
 int main(int argc, char *argv[])
 {
@@ -108,14 +96,14 @@ int main(int argc, char *argv[])
     }
     ft_printf("\n");
 
-    ft_printf("b_stack : ");
+/*     ft_printf("b_stack : ");
     r_list *temp_iteraa = b_stack; // Create a separate variable for iteration
     while (temp_iteraa)
     {
         ft_printf("%d ", temp_iteraa->number);
         temp_iteraa = temp_iteraa->next;
     }
-    ft_printf("\n");
+    ft_printf("\n"); */
 
     if (split_argv)
         free_split(split_argv);
