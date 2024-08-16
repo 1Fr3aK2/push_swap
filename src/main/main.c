@@ -37,7 +37,8 @@ int main(int argc, char *argv[])
 
     if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
     {
-        ft_printf("Número insuficiente de argumentos.\n");
+        /* ft_printf("Número insuficiente de argumentos.\n"); */
+        write(2, "Número insuficiente de argumentos.\n", 37);
         return 1;
     }
     if (argc == 2)
@@ -56,12 +57,12 @@ int main(int argc, char *argv[])
     }
     else
     {
-        // Incrementar o ponteiro argv para pular o nome do programa
+        // Incrementar o ponteiro argv para saltar o nome do programa
         argv++;
         argc--;
     }
 
-    process_args(argc, argv);
+    /* process_args(argc, argv); */
 
     init_stack(&a_stack, argv, argc);
     size = ft_lstsize((t_list *)a_stack);
@@ -112,3 +113,6 @@ int main(int argc, char *argv[])
     free_stack(&b_stack);
     return 0;
 }
+
+
+//VERIFICAR CONVERSOES DE LONG E INT POIS -2147483647 -2147483648 9487 0 2147483647  NAO ESTA A ORDENARz

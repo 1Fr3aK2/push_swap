@@ -15,6 +15,7 @@
 void init_stack(r_list **stack, char **argv, int argc) 
 {   
     r_list *node;
+    r_list *last = NULL; // Ponteiro para o último nó da lista
     long number;
     int i;
 
@@ -25,7 +26,8 @@ void init_stack(r_list **stack, char **argv, int argc)
         // Verifica se há erros de escrita antes de converter
         if (writing_errors(argv[i]))
         {
-            ft_printf("Error of syntax!\n");
+            /* ft_printf("Error of syntax!\n"); */
+            write(2, "Error\n", 6);
             free_stack(stack);
             return;
         }
@@ -34,7 +36,8 @@ void init_stack(r_list **stack, char **argv, int argc)
         number = ft_atol(argv[i]);
         if (number > INT_MAX || number < INT_MIN)
         {
-            ft_printf("Error, the number is outside of Integer limits!\n");
+            /* ft_printf("Error, the number is outside of Integer limits!\n"); */
+            write(2, "Error\n", 6);
             free_stack(stack);
             return;
         }
@@ -42,7 +45,8 @@ void init_stack(r_list **stack, char **argv, int argc)
         // Verifica se o número já está na stack
         if (duplicate(*stack, (int)number))
         {
-            ft_printf("Error, duplicated numbers!\n");
+            /* ft_printf("Error, duplicated numbers!\n"); */
+            write(2, "Error\n", 6);
             free_stack(stack);
             return;
         }
@@ -51,19 +55,29 @@ void init_stack(r_list **stack, char **argv, int argc)
         node = malloc(sizeof(r_list));
         if (!node)
         {
-            ft_printf("Malloc failed\n");
+            /* ft_printf("Malloc failed\n"); */
+            write(2, "Error\n", 6);
             free_stack(stack);
             return;
         }
         node->number = (int)number;
-
-        // Insere o node no início da stack
-        node->next = *stack;
+        node->next = NULL;
         node->prev = NULL;
-        if (*stack)
-            (*stack)->prev = node;
-        *stack = node;
+
+        if (*stack == NULL)
+        {
+            // Se a lista estiver vazia, o novo nó será o primeiro nó
+            *stack = node;
+        }
+        else
+        {
+            // Adiciona o novo nó ao final da lista
+            last->next = node;
+            node->prev = last;
+        }
+        last = node; // Atualiza o último nó para o novo nó
 
         i++;
     }   
 }
+
