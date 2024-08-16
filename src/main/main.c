@@ -37,7 +37,6 @@ int main(int argc, char *argv[])
 
     if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
     {
-        /* ft_printf("Número insuficiente de argumentos.\n"); */
         write(2, "Número insuficiente de argumentos.\n", 37);
         return 1;
     }
@@ -67,22 +66,22 @@ int main(int argc, char *argv[])
     init_stack(&a_stack, argv, argc);
     size = ft_lstsize((t_list *)a_stack);
 
-    ft_printf("a_stack antes de ordenar: ");
+    /* ft_printf("a_stack antes de ordenar: ");
     r_list *temp_itera = a_stack; // Create a separate variable for iteration
     while (temp_itera)
     {
         ft_printf("%d ", temp_itera->number);
         temp_itera = temp_itera->next;
     }
-    ft_printf("\n");
+    ft_printf("\n"); */
     if (verify(a_stack) == 1)
     {
         if (size == 2)
             sa(&a_stack);
         else if (size == 3)
             sort_three(&a_stack);
-        else if (size <= 5)
-            sort_five(&a_stack, &b_stack);
+        /* else if (size <= 5)
+            sort_five(&a_stack, &b_stack); */
         else
             sort_many(&a_stack, &b_stack);
     }
@@ -113,6 +112,3 @@ int main(int argc, char *argv[])
     free_stack(&b_stack);
     return 0;
 }
-
-
-//VERIFICAR CONVERSOES DE LONG E INT POIS -2147483647 -2147483648 9487 0 2147483647  NAO ESTA A ORDENARz

@@ -121,12 +121,14 @@ int compare(r_list **b_stack, r_list **a_stack, int *counter)
 		return (1);
 	*counter = 0;
 	current = (*a_stack);
-    while (*b_stack && *a_stack) 
+    while (*b_stack && current) 
 	{
 		if ((*b_stack)->number > current->number)
 		{
             (*counter)++;
             current = current->next;
+			if (!current-> next)
+                return (*counter);
         }
 		else
         	break;
