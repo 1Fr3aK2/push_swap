@@ -38,7 +38,7 @@ void sort_many(r_list **a_stack, r_list **b_stack)
         }      
         lst_size--;
     } */
-   while(lst_size > 3) //trocar para 3
+    while(lst_size > 3)
     {   
         pb(a_stack, b_stack);      
         lst_size--;
