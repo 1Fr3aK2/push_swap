@@ -23,8 +23,6 @@ void sort_five(r_list **a_stack, r_list **b_stack)
         return ;
 
     lst_size = ft_lstsize((t_list *)*a_stack);
-    if(lst_size < 5)
-        return ;
     while(lst_size > 3)
     {
         pb(a_stack, b_stack);

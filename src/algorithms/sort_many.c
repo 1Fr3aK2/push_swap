@@ -23,29 +23,12 @@ void sort_many(r_list **a_stack, r_list **b_stack)
         return ;
     
     lst_size = ft_lstsize((t_list *)*a_stack);
-    /* lastnode = (r_list *)ft_lstlast((t_list *)*a_stack); */
-    
-    // Movendo nodes para b_stack até restarem apenas 5 em a_stack
-/*     while(lst_size > 3) //trocar para 3
-    {
-        if((*a_stack)->number < lastnode->number)
-            pb(a_stack, b_stack);
-        else
-        {
-            rra(a_stack);
-            pb(a_stack, b_stack);
-            lastnode = (r_list *)ft_lstlast((t_list *)*a_stack);
-        }      
-        lst_size--;
-    } */
-    while(lst_size > 3)
+    while(lst_size > 5)
     {   
         pb(a_stack, b_stack);      
         lst_size--;
     }
-    /* sort_five(a_stack, b_stack); */
-    sort_three(a_stack);
-    
+    sort_five(a_stack, b_stack);    
     while(*b_stack)
     {
         counter = 0;

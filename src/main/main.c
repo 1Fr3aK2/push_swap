@@ -12,22 +12,6 @@
 
 #include "../../includes/push_swap.h"
 
-// Função que processa os argumentos e imprime o resultado
-void process_args(int argc, char *argv[])
-{
-    if (argc < 2) {
-        ft_printf("Número insuficiente de argumentos.\n");
-        return;
-    }
-
-    ft_printf("Número de argumentos: %d\n", argc);
-    for (int i = 0; i < argc; ++i) {
-        ft_printf("Argumento %d: %s\n", i, argv[i]);
-    }
-    
-}
-
-
 int main(int argc, char *argv[])
 {
     r_list *a_stack = NULL;
@@ -60,9 +44,6 @@ int main(int argc, char *argv[])
         argv++;
         argc--;
     }
-
-    /* process_args(argc, argv); */
-
     init_stack(&a_stack, argv, argc);
     size = ft_lstsize((t_list *)a_stack);
 
@@ -80,12 +61,12 @@ int main(int argc, char *argv[])
             sa(&a_stack);
         else if (size == 3)
             sort_three(&a_stack);
-        /* else if (size <= 5)
-            sort_five(&a_stack, &b_stack); */
+        else if (size <= 5)
+            sort_five(&a_stack, &b_stack);
         else
             sort_many(&a_stack, &b_stack);
     }
-/*     int i = verify(a_stack);
+    /* int i = verify(a_stack);
     printf("i = %d\n", i);
     ft_printf("a_stack depois de ordenar: ");
     r_list *temp_iteraa = a_stack; // Create a separate variable for iteration
@@ -93,13 +74,13 @@ int main(int argc, char *argv[])
     {
         ft_printf("%d ", temp_iteraa->number);
         temp_iteraa = temp_iteraa->next;
-    } */
-    /* ft_printf("b_stack : ");
-    r_list *temp_iteraa = b_stack; // Create a separate variable for iteration
-    while (temp_iteraa)
+    }
+    ft_printf("b_stack : ");
+    r_list *temp_iteraaa = b_stack; // Create a separate variable for iteration
+    while (temp_iteraaa)
     {
-        ft_printf("%d ", temp_iteraa->number);
-        temp_iteraa = temp_iteraa->next;
+        ft_printf("%d ", temp_iteraaa->number);
+        temp_iteraaa = temp_iteraaa->next;
     }
     ft_printf("\n"); */
 
