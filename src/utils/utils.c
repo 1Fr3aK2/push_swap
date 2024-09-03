@@ -115,23 +115,44 @@ void free_split(char **str)
 
 int compare(r_list **b_stack, r_list **a_stack, int *counter)
 {
-	r_list *current; 
+    r_list *current_a;
+    r_list *current_b;
 
-	if(!(*a_stack) || !(*b_stack))
-		return (1);
-	*counter = 0;
-	current = (*a_stack);
-    while (*b_stack && current) 
-	{
-		if ((*b_stack)->number > current->number)
-		{
+    if (!(*a_stack) || !(*b_stack))
+        return 1;
+
+    current_a = *a_stack;
+    current_b = *b_stack;
+    *counter = 0;
+
+
+    if (!current_b)
+        return *counter;
+
+    while (current_a)
+    {
+        
+        if (current_b->number > current_a->number)
             (*counter)++;
-            current = current->next;
-			if (!current-> next)
-                return (*counter);
-        }
-		else
-        	break;
+        current_a = current_a->next;
     }
+    current_b->counter = *counter;
     return (*counter);
+}
+
+
+r_list *find_min_counter(r_list *stack)
+{
+	r_list *min_counter;
+
+	min_counter = stack;
+	if(!stack)
+		return (NULL);
+	while(stack->next)
+	{
+        stack = stack->next;
+		if(stack->counter < min_counter->counter)
+			min_counter = stack;
+	}
+	return (min_counter);
 }

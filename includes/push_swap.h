@@ -24,7 +24,7 @@
 typedef struct p_list
 {
 	int			    number;
-    int             index;
+    int             counter;
 	struct p_list	*next;
     struct p_list   *prev;
 

@@ -63,7 +63,8 @@ void init_stack(r_list **stack, char **argv, int argc)
         node->number = (int)number;
         node->next = NULL;
         node->prev = NULL;
-
+        node->counter = 0;
+        
         if (*stack == NULL)
         {
             // Se a lista estiver vazia, o novo nó será o primeiro nó

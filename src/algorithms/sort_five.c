@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sort_five.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 07:39:14 by marvin            #+#    #+#             */
-/*   Updated: 2024/07/16 07:39:14 by marvin           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/push_swap.h"
 
 void sort_five(r_list **a_stack, r_list **b_stack)
@@ -23,6 +11,8 @@ void sort_five(r_list **a_stack, r_list **b_stack)
         return ;
 
     lst_size = ft_lstsize((t_list *)*a_stack);
+    if(lst_size < 5)
+        return ;
     while(lst_size > 3)
     {
         pb(a_stack, b_stack);
@@ -93,7 +83,8 @@ void sort_five(r_list **a_stack, r_list **b_stack)
                 sa(a_stack);
             }
         }
-
+        if ((*a_stack)->number > (*a_stack)->next->number)
+            sa(a_stack);
         if(*b_stack && highest_number_b->number == lowest_number_a->number)
         {
             pa(b_stack, a_stack);

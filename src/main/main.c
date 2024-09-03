@@ -66,6 +66,7 @@ int main(int argc, char *argv[])
         else
             sort_many(&a_stack, &b_stack);
     }
+    /* ft_printf("counter: %d\n", b_stack->counter); */
     /* int i = verify(a_stack);
     printf("i = %d\n", i);
     ft_printf("a_stack depois de ordenar: ");

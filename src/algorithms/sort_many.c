@@ -14,9 +14,9 @@
 void sort_many(r_list **a_stack, r_list **b_stack)
 {
     int lst_size;
-    int median;
+    /* int median;
     int counter;
-    int original_counter;
+    int original_counter; */
     /* r_list *lastnode; */
     
     if(!(*a_stack) || !(*a_stack)->next)
@@ -28,8 +28,13 @@ void sort_many(r_list **a_stack, r_list **b_stack)
         pb(a_stack, b_stack);      
         lst_size--;
     }
-    sort_five(a_stack, b_stack);    
-    while(*b_stack)
+    sort_five(a_stack, b_stack);
+/*     while(*b_stack)
+    {
+        compare(b_stack, a_stack, &(*b_stack)->counter);
+    }
+    ft_printf("counter: %d\n", (*b_stack)->counter); */
+/*     while(*b_stack)
     {
         counter = 0;
         original_counter = compare(b_stack, a_stack, &counter);
@@ -54,5 +59,5 @@ void sort_many(r_list **a_stack, r_list **b_stack)
                 rra(a_stack);
         }
         lst_size =  ft_lstsize((t_list *)*a_stack);
-    }
+    } */
 }
