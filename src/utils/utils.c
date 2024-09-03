@@ -119,15 +119,15 @@ int compare(r_list **b_stack, r_list **a_stack, int *counter)
     r_list *current_b;
 
     if (!(*a_stack) || !(*b_stack))
-        return 1;
+        return (1);
 
     current_a = *a_stack;
     current_b = *b_stack;
-    *counter = 0;
+    (*counter) = (*b_stack)->counter; //0
 
 
     if (!current_b)
-        return *counter;
+        return (0);
 
     while (current_a)
     {
@@ -136,7 +136,7 @@ int compare(r_list **b_stack, r_list **a_stack, int *counter)
             (*counter)++;
         current_a = current_a->next;
     }
-    current_b->counter = *counter;
+    /* current_b->counter = *counter; */
     return (*counter);
 }
 

@@ -29,6 +29,29 @@ void sort_many(r_list **a_stack, r_list **b_stack)
         lst_size--;
     }
     sort_five(a_stack, b_stack);
+    r_list *current_b = *b_stack;
+    while (current_b) //saber o counter de cada elemento em falta
+                        //implementar uma simulacao para verificar quando existem 2 counters iguais qual numero passar para a_stack
+                        //opcao 1: verificar qual o menor numero
+                        //opcao 2: verificar o menor numero de operacoes necessarias
+    {
+        static int i = 0;
+        compare(&current_b, a_stack, &(current_b->counter));
+        printf("Counter %d: %d\n", ++i,  current_b->counter);
+        current_b = current_b->next;
+    }
+    //descobrir o menor counter com find_min ...
+}
+   /*  while(*b_stack)
+    {
+        static int i = 0;
+        compare(&(*b_stack), &(*a_stack), &(*b_stack)->counter);
+        ft_printf("counter %d: %d\n", ++i, (*b_stack)->counter);     
+        (*b_stack) = (*b_stack) -> next;
+    } */
+
+
+
 /*     while(*b_stack)
     {
         compare(b_stack, a_stack, &(*b_stack)->counter);
@@ -60,4 +83,3 @@ void sort_many(r_list **a_stack, r_list **b_stack)
         }
         lst_size =  ft_lstsize((t_list *)*a_stack);
     } */
-}

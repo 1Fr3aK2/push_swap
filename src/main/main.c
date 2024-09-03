@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
             sort_many(&a_stack, &b_stack);
     }
     /* ft_printf("counter: %d\n", b_stack->counter); */
-    /* int i = verify(a_stack);
+    int i = verify(a_stack);
     printf("i = %d\n", i);
     ft_printf("a_stack depois de ordenar: ");
     r_list *temp_iteraa = a_stack; // Create a separate variable for iteration
@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
         ft_printf("%d ", temp_iteraaa->number);
         temp_iteraaa = temp_iteraaa->next;
     }
-    ft_printf("\n"); */
+    ft_printf("\n");
 
     if (split_argv)
         free_split(split_argv);
