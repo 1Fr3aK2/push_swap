@@ -14,6 +14,7 @@
 void sort_many(r_list **a_stack, r_list **b_stack)
 {
     int lst_size;
+    r_list *min_counter;
     /* int median;
     int counter;
     int original_counter; */
@@ -37,9 +38,11 @@ void sort_many(r_list **a_stack, r_list **b_stack)
     {
         static int i = 0;
         compare(&current_b, a_stack, &(current_b->counter));
-        printf("Counter %d: %d\n", ++i,  current_b->counter);
+        printf("Counter %d: %d, number: %d\n", ++i,  current_b->counter, current_b->number);
         current_b = current_b->next;
     }
+    min_counter = find_min_counter(*b_stack);
+    ft_printf("min counter number is: %d\n", min_counter->number);
     //descobrir o menor counter com find_min ...
 }
    /*  while(*b_stack)
