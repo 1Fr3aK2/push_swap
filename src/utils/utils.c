@@ -180,6 +180,11 @@ r_list *find_min_counter(r_list *stack)
         stack = stack->next;
 		if(stack->counter < min_counter->counter)
 			min_counter = stack;
+		else if (stack->counter == min_counter->counter)
+		{
+			if(stack->number < min_counter->number)	
+				min_counter = stack;
+		}
 	}
 	return (min_counter);
 }
