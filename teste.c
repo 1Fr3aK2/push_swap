@@ -167,3 +167,37 @@ void sort_five(r_list **a_stack, r_list **b_stack)
         lst_size = ft_lstsize((t_list *)*a_stack);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+while (current_b)
+{
+    current_a = *a_stack;
+    current_b->counter = 0; // Inicializa o counter para o nó atual de b_stack
+    while (current_a)
+    {
+        if (current_b->number > current_a->number)
+        {    
+            current_b->counter++; // Incrementa o counter no nó atual de b_stack
+        }
+        else
+        {
+            break; // Interrompe o loop interno, pois encontrou um número maior ou igual
+        }
+        current_a = current_a->next; // Avança para o próximo nó em a_stack
+    }
+    current_b = current_b->next; // Avança para o próximo nó em b_stack
+}

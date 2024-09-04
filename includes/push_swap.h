@@ -65,7 +65,7 @@ long	ft_atol(const char *str);
 r_list *high_number(r_list *stack);
 r_list *low_number(r_list *stack); 
 void free_split(char **str);
-int compare(r_list **b_stack, r_list **a_stack, int *counter);
+void compare(r_list **b_stack, r_list **a_stack);
 r_list *find_min_counter(r_list *stack);
 
 //stacks
@@ -77,4 +77,4 @@ int main(int argc, char *argv[]);
 
 
 
-#endif 
+#endif

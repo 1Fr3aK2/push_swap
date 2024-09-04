@@ -113,7 +113,7 @@ void free_split(char **str)
     } */
 
 
-int compare(r_list **b_stack, r_list **a_stack, int *counter)
+/* int compare(r_list **b_stack, r_list **a_stack, int *counter)
 {
     r_list *current_a;
     r_list *current_b;
@@ -136,8 +136,35 @@ int compare(r_list **b_stack, r_list **a_stack, int *counter)
             (*counter)++;
         current_a = current_a->next;
     }
-    /* current_b->counter = *counter; */
-    return (*counter);
+    current_b->counter = *counter;
+     return (*counter);
+} */
+
+void compare(r_list **b_stack, r_list **a_stack/* , int *counter */)
+{
+    r_list *current_a;
+    r_list *current_b;
+
+    if (!(*a_stack) || !(*b_stack))
+        return ;
+
+    current_b = *b_stack;
+    if (!current_b)
+        return ;
+
+    while (current_b)
+    {
+    	current_a = *a_stack;
+		while(current_a)
+		{
+			if (current_b->number > current_a->number)
+				current_b->counter++;
+			else
+				break;
+			current_a = current_a->next;
+		}
+		current_b = current_b->next;
+    }
 }
 
 
