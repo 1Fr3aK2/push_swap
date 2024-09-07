@@ -188,3 +188,30 @@ r_list *find_min_counter(r_list *stack)
 	}
 	return (min_counter);
 }
+
+int compare_inside(r_list **stack) // corrigir os current, é o motivo da segfault
+{
+	r_list *current_b;
+	int counter;
+
+	if(!(*stack))
+		return (1);
+	
+	current_b = (*stack)->next;
+	if(!current_b)
+		return (1);
+	
+	counter = 0;
+	while(stack)
+	{
+		if(current_b->counter < (*stack)->counter)
+		{
+			counter++;
+			current_b = current_b->next;
+		}
+		else
+			break;
+		
+	}
+	return (counter);
+}

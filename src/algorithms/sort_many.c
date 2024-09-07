@@ -43,6 +43,8 @@ void sort_many(r_list **a_stack, r_list **b_stack)
     }
     min_counter = find_min_counter(*b_stack);
     ft_printf("min counter number is: %d\n", min_counter->number);
+    int i = compare_inside(b_stack);
+    printf("compare inside: %d\n", i);
     //descobrir o menor counter com find_min ...
 }
 

@@ -67,6 +67,7 @@ r_list *low_number(r_list *stack);
 void free_split(char **str);
 void compare(r_list **b_stack, r_list **a_stack);
 r_list *find_min_counter(r_list *stack);
+int compare_inside(r_list **stack);
 
 //stacks
 void init_stack(r_list **stack, char **argv, int argc);
