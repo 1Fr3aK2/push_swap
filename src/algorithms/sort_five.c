@@ -45,7 +45,7 @@ void sort_five(r_list **a_stack, r_list **b_stack)
                 ra(a_stack);
                 ra(a_stack);
             }
-            else if((*b_stack)->number > lowest_number_a->number &&  (*b_stack)-> number < highest_number_a->prev->number)
+            else if((*b_stack)->number > lowest_number_a->number && (*b_stack)-> number < highest_number_a->prev->number)
             {
                 pa(b_stack, a_stack);
                 sa(a_stack);
@@ -93,5 +93,9 @@ void sort_five(r_list **a_stack, r_list **b_stack)
             lowest_number_a = low_number(*a_stack);
         }
         lst_size = ft_lstsize((t_list *)*a_stack);
+        if(verify(*a_stack) == 1)
+        {
+            sort_five(a_stack, b_stack);
+        }
     }
 }

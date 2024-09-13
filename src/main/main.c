@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
         temp_itera = temp_itera->next;
     }
     ft_printf("\n"); */
-    while (verify(a_stack) == 1)
+    if (verify(a_stack) == 1)
     {
         if (size == 2)
             sa(&a_stack);

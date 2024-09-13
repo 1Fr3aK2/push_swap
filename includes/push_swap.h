@@ -72,7 +72,7 @@ int compare_inside(r_list **stack);
 //stacks
 void init_stack(r_list **stack, char **argv, int argc);
 int verify(r_list *stack);
-
+void min_to_top(r_list **b_stack, r_list **a_stack);
 //main
 int main(int argc, char *argv[]);
 

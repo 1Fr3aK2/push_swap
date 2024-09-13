@@ -189,29 +189,68 @@ r_list *find_min_counter(r_list *stack)
 	return (min_counter);
 }
 
-int compare_inside(r_list **stack) // corrigir os current, é o motivo da segfault
+int compare_inside(r_list **stack) // saber quantos numeros com maior counter existem
 {
-	r_list *current_b;
+	r_list *current_next;
+	r_list	*current_a;
 	int counter;
 
 	if(!(*stack))
 		return (1);
 	
-	current_b = (*stack)->next;
-	if(!current_b)
+	current_a = (*stack);
+	current_next = (*stack)->next;
+	if(!current_a || !current_next)
 		return (1);
 	
 	counter = 0;
-	while(stack)
+	while(current_next)
 	{
-		if(current_b->counter < (*stack)->counter)
+		if(current_next->counter < current_a->counter)
 		{
 			counter++;
-			current_b = current_b->next;
+			current_next = current_next->next;
 		}
 		else
 			break;
 		
 	}
 	return (counter);
+}
+
+void min_to_top(r_list **b_stack, r_list **a_stack)
+{
+	r_list *min_counter;
+	r_list *lastnode;
+	r_list *current_b;
+	if(!(*b_stack) || !(*a_stack))
+		return ;
+	
+	current_b = (*b_stack);
+	min_counter = find_min_counter(*b_stack);
+	while(current_b->number != min_counter->number)
+	{
+		lastnode = (r_list *)ft_lstlast((t_list *)*b_stack);
+		printf("lastnode->nummber : %d\n", lastnode->number);
+		printf("current_b->nummber : %d\n", current_b->number);
+		min_counter = find_min_counter(*b_stack);
+		if(current_b->number == min_counter->number)
+		{
+			pa(b_stack, a_stack);
+		}
+		else if(current_b->next && current_b->next->number == min_counter->number)
+		{    
+			sb(b_stack);
+			pa(b_stack, a_stack);
+		}
+		else if(lastnode && lastnode->number == min_counter->number)
+		{
+			rrb(b_stack);
+			pa(b_stack, a_stack);
+		}
+		else
+		{
+			rb(b_stack);
+		}
+	}
 }
