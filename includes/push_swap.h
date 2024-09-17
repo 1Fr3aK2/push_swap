@@ -54,6 +54,7 @@ void rr(r_list **a_stack, r_list **b_stack);
 void sort_three(r_list **stack);
 void sort_five(r_list **a_stack, r_list **b_stack);
 void sort_many(r_list **a_stack, r_list **b_stack);
+void final_sort(r_list **a_stack);
 
 //errors
 int writing_errors(char *str);
@@ -68,6 +69,7 @@ void free_split(char **str);
 void compare(r_list **b_stack, r_list **a_stack);
 r_list *find_min_counter(r_list *stack);
 int compare_inside(r_list **stack);
+int compare_numbers(r_list **stack);
 
 //stacks
 void init_stack(r_list **stack, char **argv, int argc);

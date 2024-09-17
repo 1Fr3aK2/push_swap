@@ -25,4 +25,5 @@ void sort_three(r_list **stack)
         rra(stack);
     if((*stack)->number > (*stack)->next->number)
         sa(stack);
+    printf("sort_3 done\n");
 }

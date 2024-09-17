@@ -1,5 +1,17 @@
-#include "../../includes/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_five.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/15 19:16:52 by marvin            #+#    #+#             */
+/*   Updated: 2024/09/15 19:16:52 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../../includes/push_swap.h"
+ 
 void sort_five(r_list **a_stack, r_list **b_stack)
 {
     r_list *highest_number_b;
@@ -27,7 +39,7 @@ void sort_five(r_list **a_stack, r_list **b_stack)
     while(*b_stack && lst_size <= 5)
     {
         if (lst_size == 5)
-            return;
+            break ;
         else if(*b_stack && highest_number_b && (*b_stack)->number != highest_number_b->number)
         {
             if((*b_stack)->number < lowest_number_a->number)
@@ -98,4 +110,5 @@ void sort_five(r_list **a_stack, r_list **b_stack)
             sort_five(a_stack, b_stack);
         }
     }
+    printf("sort_five done\n");
 }

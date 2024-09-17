@@ -1,203 +1,88 @@
-#include <unistd.h>
-#include <limits.h>
 #include <stdio.h>
-#include <stddef.h>
-#include <stdbool.h>
 #include <stdlib.h>
-/* #include "../includes/libft/libft.h"
-#include "../includes/libft/ft_printf/ft_printf.h" */
 
-typedef struct p_list
-{
-	int			    number;
-    int             counter;
-	struct p_list	*next;
-    struct p_list   *prev;
-
+// Definindo a estrutura de um nó da lista encadeada
+typedef struct r_list {
+    int number;
+    struct r_list *next;
 } r_list;
 
-r_list *find_min_counter(r_list *stack)
+// Função fornecida para comparar os números
+int compare_numbers(r_list **stack) // saber quantos numeros com maior counter existem
 {
-	r_list *min_counter;
+    r_list *current_next;
+    r_list *current_a;
+    int counter;
 
-	min_counter = stack;
-	if(!stack)
-		return (NULL);
-	while(stack->next)
-	{
-        stack = stack->next;
-		if(stack->counter < min_counter->counter)
-			min_counter = stack;
-	}
-	return (min_counter);
+    if (!(*stack))
+        return 1;
+
+    current_a = (*stack);
+    current_next = (*stack)->next;
+    if (!current_a || !current_next)
+        return 1;
+
+    counter = 0;
+    while (current_next) {
+        if (current_next->number < current_a->number) {
+            counter++;
+            current_next = current_next->next;
+        } else
+            break;
+    }
+    return counter;
 }
-int main()
-{
-    // Criando manualmente a lista ligada
-    r_list *head = malloc(sizeof(r_list));
-    r_list *second = malloc(sizeof(r_list));
-    r_list *third = malloc(sizeof(r_list));
 
-    head->counter = 10;
-    head->next = second;
+// Função para criar um novo nó na lista
+r_list *create_node(int number) {
+    r_list *new_node = (r_list *)malloc(sizeof(r_list));
+    if (!new_node) {
+        printf("Erro ao alocar memória.\n");
+        exit(1);
+    }
+    new_node->number = number;
+    new_node->next = NULL;
+    return new_node;
+}
 
-    second->counter = 50;
-    second->next = third;
+// Função para adicionar um nó ao início da lista
+void push(r_list **stack, int number) {
+    r_list *new_node = create_node(number);
+    new_node->next = *stack;
+    *stack = new_node;
+}
 
-    third->counter = 5;
-    third->next = NULL;
+// Função para liberar a memória da lista
+void free_list(r_list *stack) {
+    r_list *temp;
+    while (stack) {
+        temp = stack;
+        stack = stack->next;
+        free(temp);
+    }
+}
 
-    // Encontrando o nó com o menor valor de counter
-    r_list *min_node = find_min_counter(head);
+int main() {
+    r_list *stack = NULL;
 
-    if (min_node)
-        printf("O menor counter é: %d\n", min_node->counter);
-    else
-        printf("A lista está vazia.\n");
+    // Adicionando alguns números à lista
+    push(&stack, 5);
+    push(&stack, 3);
+    push(&stack, 8);
+    push(&stack, 1);
+    push(&stack, 9); // Lista: 9 -> 1 -> 8 -> 3 -> 5
 
-    // Liberando memória
-    free(third);
-    free(second);
-    free(head);
+    // Chamando a função compare_numbers
+    while (stack)
+    {
+        int result = compare_numbers(&stack);
+        printf("O resultado da comparação é: %d\n", result);
+        stack = stack->next;
+    }
+    
+
+    // Liberando a memória da lista
+    free_list(stack);
 
     return 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#include "../../includes/push_swap.h"
-
-void sort_five(r_list **a_stack, r_list **b_stack)
-{
-    r_list *highest_number_b;
-    r_list *highest_number_a;
-    r_list *lowest_number_a;
-    int lst_size;
-
-    if (!(*a_stack) || !(*a_stack)->next)
-        return;
-
-    lst_size = ft_lstsize((t_list *)*a_stack);
-    
-    // Move two elements to b_stack if list size > 3
-    while (lst_size > 3)
-    {
-        pb(a_stack, b_stack);
-        lst_size--;
-    }
-
-    sort_three(a_stack); // Sort the 3 elements in a_stack
-
-    while (*b_stack)
-    {
-        highest_number_a = high_number(*a_stack);
-        lowest_number_a = low_number(*a_stack);
-        highest_number_b = high_number(*b_stack);
-
-        if ((*b_stack)->number != highest_number_b->number)
-        {
-            if ((*b_stack)->number < lowest_number_a->number)
-            {
-                pa(b_stack, a_stack);
-            }
-            else if ((*b_stack)->number > highest_number_a->number)
-            {
-                pa(b_stack, a_stack);
-                ra(a_stack);
-            }
-            else if ((*b_stack)->number > lowest_number_a->number && (*b_stack)->number > highest_number_a->prev->number)
-            {
-                rra(a_stack);
-                pa(b_stack, a_stack);
-                ra(a_stack);
-                ra(a_stack);
-            }
-            else
-            {
-                pa(b_stack, a_stack);
-                sa(a_stack);
-            }
-        }
-        else
-        {
-            if (highest_number_b->number > highest_number_a->number)
-            {
-                pa(b_stack, a_stack);
-                ra(a_stack);
-            }
-            else if (highest_number_b->number < lowest_number_a->number)
-            {
-                pa(b_stack, a_stack);
-            }
-            else if (highest_number_b->number > lowest_number_a->number && highest_number_b->number > highest_number_a->prev->number)
-            {
-                rra(a_stack);
-                pa(b_stack, a_stack);
-                ra(a_stack);
-                ra(a_stack);
-            }
-            else
-            {
-                pa(b_stack, a_stack);
-                sa(a_stack);
-            }
-        }
-
-        // Ensure the stack size is updated after each operation
-        lst_size = ft_lstsize((t_list *)*a_stack);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-while (current_b)
-{
-    current_a = *a_stack;
-    current_b->counter = 0; // Inicializa o counter para o nó atual de b_stack
-    while (current_a)
-    {
-        if (current_b->number > current_a->number)
-        {    
-            current_b->counter++; // Incrementa o counter no nó atual de b_stack
-        }
-        else
-        {
-            break; // Interrompe o loop interno, pois encontrou um número maior ou igual
-        }
-        current_a = current_a->next; // Avança para o próximo nó em a_stack
-    }
-    current_b = current_b->next; // Avança para o próximo nó em b_stack
 }

@@ -14,7 +14,7 @@
 void sort_many(r_list **a_stack, r_list **b_stack)
 {
     int lst_size;
-    r_list *min_counter;
+    /* r_list *min_counter; */
     r_list *current_b;
     /* int median;
     int counter;
@@ -30,6 +30,14 @@ void sort_many(r_list **a_stack, r_list **b_stack)
         lst_size--;
     }
     sort_five(a_stack, b_stack);
+    r_list *temp_iteraa = *a_stack; // Create a separate variable for iteration
+    ft_printf("stack a :\n");
+    while (temp_iteraa)
+    {
+        ft_printf("%d ", temp_iteraa->number);
+        temp_iteraa = temp_iteraa->next;
+    }
+    printf("\n");
     current_b = *b_stack;
     compare(&current_b, a_stack);
     while (current_b)
@@ -38,15 +46,25 @@ void sort_many(r_list **a_stack, r_list **b_stack)
         printf("\nCounter %d: %d, number: %d\n", ++i,  current_b->counter, current_b->number);
         current_b = current_b->next;
     }
-    min_counter = find_min_counter(*b_stack);
+    r_list *min_counter = find_min_counter(*b_stack); 
     ft_printf("min counter number is: %d\n", min_counter->number);
     min_to_top(b_stack, a_stack);
+    printf("stack a:\n");
+    r_list *current_a = *a_stack;
+     while (current_a)
+    {
+        ft_printf("%d ", current_a->number);
+        current_a = current_a->next;
+    }
+    printf("\n");
+    if(verify(*a_stack) == 1)
+        final_sort(&(*a_stack));    
     //organizar a_stack
 
 
 }
 
-    /* int i = compar0e_inside(b_stack);
+    /* int i = compare_inside(b_stack);
     printf("compare inside: %d\n", i); */
     /* int i = compare_inside((b_stack));
     printf("compare inside %d\n", i); */
