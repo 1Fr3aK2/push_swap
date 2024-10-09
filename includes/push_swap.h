@@ -24,7 +24,7 @@
 typedef struct p_list
 {
 	int			    number;
-    int             counter;
+    int             index;
 	struct p_list	*next;
     struct p_list   *prev;
 
@@ -53,8 +53,6 @@ void rr(r_list **a_stack, r_list **b_stack);
 //algorithms
 void sort_three(r_list **stack);
 void sort_five(r_list **a_stack, r_list **b_stack);
-void sort_many(r_list **a_stack, r_list **b_stack);
-void final_sort(r_list **a_stack);
 
 //errors
 int writing_errors(char *str);
@@ -66,15 +64,12 @@ long	ft_atol(const char *str);
 r_list *high_number(r_list *stack);
 r_list *low_number(r_list *stack); 
 void free_split(char **str);
-void compare(r_list **b_stack, r_list **a_stack);
-r_list *find_min_counter(r_list *stack);
-int compare_inside(r_list **stack);
-int compare_numbers(r_list **stack);
+
 
 //stacks
 void init_stack(r_list **stack, char **argv, int argc);
 int verify(r_list *stack);
-void min_to_top(r_list **b_stack, r_list **a_stack);
+
 //main
 int main(int argc, char *argv[]);
 

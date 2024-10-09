@@ -63,7 +63,7 @@ void init_stack(r_list **stack, char **argv, int argc)
         node->number = (int)number;
         node->next = NULL;
         node->prev = NULL;
-        node->counter = 0;
+        node->index = 0;
         
         if (*stack == NULL)
         {
