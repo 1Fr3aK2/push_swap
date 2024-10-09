@@ -28,6 +28,8 @@ t_list	*ft_lstnew(void *content)
 		return (NULL);
 	new_node->content = content;
 	new_node->next = NULL;
+	new_node->index = -1;
+
 	return (new_node);
 }
 
