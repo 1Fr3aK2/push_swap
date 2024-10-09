@@ -63,8 +63,6 @@ int main(int argc, char *argv[])
             sort_three(&a_stack);
         else if (size <= 5)
             sort_five(&a_stack, &b_stack);
-        else
-            sort_many(&a_stack, &b_stack);
     }
     /* ft_printf("counter: %d\n", b_stack->counter); */
     /* int i = verify(a_stack);
